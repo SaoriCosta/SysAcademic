@@ -9,7 +9,7 @@ import br.com.sysacademic.entidades.Matriculas;
 public class MatriculasManager {
 	
 	private static HashMap<String, ArrayList<Matriculas>> matriculas1 = new HashMap<String,ArrayList<Matriculas>>(4);
-	public static ArrayList<Matriculas> lista = new ArrayList<Matriculas>();
+	public static ArrayList<Matriculas> lista;
 	
 	public static HashMap<String, ArrayList<Matriculas>> getMatriculas() {
 		return matriculas1;
@@ -19,8 +19,16 @@ public class MatriculasManager {
 		matriculas1 = matriculas;
 	}
 	public static void addMatricula(Matriculas matricula){
+		if(matriculas1.containsKey(matricula.getTurma().getCodigo())){
+			lista = matriculas1.get(matricula.getTurma().getCodigo());
+			lista.add(matricula);
+			matriculas1.put(matricula.getTurma().getCodigo(),lista);
+		}
+		else{
+			lista = new ArrayList<>();
+			lista.add(matricula);
+			matriculas1.put(matricula.getTurma().getCodigo(), lista);
+		}
 	
-		lista.add(matricula);
-		matriculas1.put(matricula.getTurma().getCodigo(), lista);
 	}
 }

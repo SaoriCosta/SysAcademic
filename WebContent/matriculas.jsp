@@ -17,9 +17,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<!--   <link rel='stylesheet' href='materialize/css/materialize.css'> -->
+   <link rel='stylesheet' href='materialize/css/materialize.css'>
 
 <script src="js/jquery.min.js"></script>
+<script src="materialize/js/materialize.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     $('select').material_select();
@@ -55,7 +56,7 @@ $(document).ready(function() {
 	</option>
 	<%} %>
 	</select>
-<button class="btn" type = "submit" >Cadastrar</button>
+<button class="btn black" type = "submit" >Cadastrar</button>
 </form>
 </div>
 <%! 
@@ -72,8 +73,7 @@ $(document).ready(function() {
 	throw new InexistenteException();
 		}
 	
-				
-		if (!MatriculasManager.lista.isEmpty() && MatriculasManager.getMatriculas().get(cod_turma) != null)
+		if (MatriculasManager.getMatriculas().get(cod_turma) != null)
 			for (int j = 0; j < MatriculasManager.getMatriculas().get(cod_turma).size(); j++)
 				if (MatriculasManager.getMatriculas().get(cod_turma).get(j).getAluno().getCpf().equals(cpf))
 					throw new MatriculaException();
@@ -99,33 +99,29 @@ $(document).ready(function() {
 			<th>Cpf do Aluno</th>
 			<th>Período</th> 
 			</tr>
-			<a style='margin:2%;' class='btn black white-text' href = 'cadastro-matricula.html'> +Cadastrar Matricula</a>
-			<a class='btn black white-text' href = 'index.html'> Início</a>
-	
+			
+			
+		<% request.setAttribute("codturma", cod_turma); %>
+		
 		<%if(cod_turma != null && cpf!=null){ %>
-		<c:forEach var="i" items="${MatriculasManager.getMatriculas()}">
-		<tr>
-		<td>${i.value.get(cod_turma).get(j).getTurma().getCodigo()}</td>
-		<td>${i.value.get(cod_turma).get(j).getTurma().getDisciplina()}</td>
-		<td>${i.value.get(cod_turma).get(j).getAluno().getNome()}</td>
-		<td>${i.value.get(cod_turma).get(j).getAluno().getCpf()}</td>
-		<td>${i.value.get(cod_turma).get(j).getTurma().getPeriodo()}</td>
-		<td><a href="removerTurma?codigo=${i.value.getCodigo()}">Remover</a></td>
-		</tr>
-		</c:forEach>
-		<%} 
 		
-		for (int j = 0; j < MatriculasManager.getMatriculas().get(cod_turma).size(); j++) {
-			out.println("<tr>" + "<td>" + MatriculasManager.getMatriculas().get(cod_turma).get(j).getTurma().getCodigo()
-					+ "</td>" + "<td>" + MatriculasManager.getMatriculas().get(cod_turma).get(j).getTurma().getDisciplina() + "</td>"
-					+ "<td>" + MatriculasManager.getMatriculas().get(cod_turma).get(j).getAluno().getNome() + "</td>" + "<td>"
-					+ MatriculasManager.getMatriculas().get(cod_turma).get(j).getAluno().getCpf() + "</td>" + "<td>"
-					+ MatriculasManager.getMatriculas().get(cod_turma).get(j).getTurma().getPeriodo() + "</td>" + "</tr>");
-		}
-		%>
+			<c:forEach var="j" begin="0" end="<%=MatriculasManager.getMatriculas().get(cod_turma).size()-1 %>">
+				
+				<tr>
+				<td>${MatriculasManager.getMatriculas().get(codturma).get(j).getTurma().getCodigo()}</td>
+				<td>${MatriculasManager.getMatriculas().get(codturma).get(j).getTurma().getDisciplina()}</td>
+				<td>${MatriculasManager.getMatriculas().get(codturma).get(j).getAluno().getNome()}</td>
+				<td>${MatriculasManager.getMatriculas().get(codturma).get(j).getAluno().getCpf()}</td>
+				<td>${MatriculasManager.getMatriculas().get(codturma).get(j).getTurma().getPeriodo()}</td>	
+				
+				</tr>
+			
+			</c:forEach>
 		
+		<%} %>
+
 		</table>
 
-
+		<a class='btn black white-text' href = 'index.html'> Início</a>
 </body>
 </html>

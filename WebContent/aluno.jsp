@@ -10,7 +10,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel='stylesheet' href='materialize/css/materialize.css'>
+<link rel="stylesheet" href="materialize/css/materialize.min.css">
+<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <title>Aluno</title>
 </head>
 
@@ -50,7 +51,7 @@
 			<td>
 				<%=AlunosManager.getAlunos().get(i).getCpf() %>
 			</td>
-			<td><a href="editar-aluno.jsp?id=<%= AlunosManager.getAlunos().get(i).getCpf()%>">Editar</a></td>
+			<td><i class="material-icons black-text left">mode_edit</i><a href="editar-aluno.jsp?id=<%= AlunosManager.getAlunos().get(i).getCpf()%>">Editar</a></td>
 		</tr>
 
 		<%
