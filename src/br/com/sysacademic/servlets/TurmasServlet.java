@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.sysacademic.entidades.Turmas;
-import br.com.sysacademic.persistence.AlunosManager;
+import br.com.sysacademic.entidades.Turma;
+import br.com.sysacademic.persistence.AlunoManager;
 import br.com.sysacademic.persistence.TurmasManager;
 
 @WebServlet("/turmas")
@@ -75,7 +75,7 @@ public class TurmasServlet extends HttpServlet {
 		if (request.getParameter("creditos") != null && !request.getParameter("creditos").equals(""))
 			credito = Integer.parseInt(request.getParameter("creditos"));
 
-		Turmas t = new Turmas();
+		Turma t = new Turma();
 
 		if (codigo.equals("") || disciplina.equals("") || periodo.equals("") || credito == 0) {
 			throw new CadastroException();

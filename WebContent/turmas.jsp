@@ -1,7 +1,7 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="br.com.sysacademic.servlets.InsertException"%>
 <%@page import="br.com.sysacademic.servlets.CadastroException"%>
-<%@page import="br.com.sysacademic.entidades.Turmas"%>
+<%@page import="br.com.sysacademic.entidades.Turma"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="br.com.sysacademic.persistence.TurmasManager"%>
@@ -49,7 +49,7 @@
 			if (request.getParameter("creditos") != null && !request.getParameter("creditos").equals(""))
 				credito = Integer.parseInt(request.getParameter("creditos"));
 
-			Turmas t = new Turmas();
+			Turma t = new Turma();
 			if(codigo != null && disciplina != null && periodo != null)
 			if (codigo.equals("") || disciplina.equals("") || periodo.equals("") || credito == 0) {
 				throw new CadastroException();

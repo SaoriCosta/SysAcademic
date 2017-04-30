@@ -2,19 +2,23 @@
 <html>
 <head>
 <link rel='stylesheet' href='materialize/css/materialize.css'>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <title>::. Cadastrar Aluno .::</title>
 </head>
 <body>
-<div class="container center">
-<h4> Cadastro de Aluno </h4>
+<div class="container">
+<h4 class="center"> Cadastro de Aluno </h4>
 
-<form action="aluno.jsp" method="post">
-	<input type = "text" name = "nome" placeholder = "Nome" >
-	<input type = "text" name = "cpf"  placeholder = "Cpf" >
-	<input type = "tel" name = "telefone"  placeholder = "Telefone">
-	<input type = "email" name = "email"  placeholder = "Email" >
-	<button class="btn" type = "submit" >Cadastrar</button>
+<form action="alunos" method="post">
+	<label class="black-text">Nome:</label><input type = "text" name = "nome" placeholder = "Nome" value="ayrton">
+		<label class="black-text">CPF:</label><input type = "text" name = "cpf"  placeholder = "Cpf" value="09">
+	<label class="black-text">Telefone:</label><input type = "tel" name = "telefone"  placeholder = "Telefone" value="3456">
+		<label class="black-text">E-mail:</label><input type = "email" name = "email"  placeholder = "Email" value="a@a.com">
+		<label class="black-text">Senha:</label><input type="password" name="senha" placeholder="Senha: " value="123">
+		<label class="black-text">Confirmar Senha:</label><input type="password" name="confsenha" placeholder="Confirmar Senha: " value="123" >
+	<button class="btn light-blue" type = "submit" ><i class="material-icons">done</i> Cadastrar</button>
 </form>
 </div>
 </body>
