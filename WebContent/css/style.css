@@ -2,3 +2,20 @@ html{
 	font-family: 'Josefin Sans', sans-serif;
 	font-size:120%;
 }
+
+#login,#senha{
+	border:1px solid #DDD;
+	border-radius:5px;
+	height:22px;
+	width:200px;
+}
+#submit{
+	border:1px solid #fff;
+	border-radius:5px;
+	height:27px;
+	width:100px;
+	float:right;
+	cursor:pointer;
+	background:#000;
+	color:#fff;
+}

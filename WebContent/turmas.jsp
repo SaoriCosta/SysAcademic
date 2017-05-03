@@ -15,6 +15,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+<jsp:useBean id="bean" class="br.com.sysacademic.persistence.TurmasManager"></jsp:useBean>
+
 <h4 class='center'>Listagem de Turmas!</h4>
 				<table class='striped'>
 				<tr> 
@@ -28,7 +31,7 @@
 				
 				<%// request.setAttribute("turma", TurmasManager.getTurmas()); %>
 				
-				<c:forEach var="i" items="${TurmasManager.getTurmas()}">
+				<c:forEach var="i" items="${bean.getTurmas()}">
 							<tr>
 							<td>${i.value.getCodigo()}</td>
 							<td>${i.value.getDisciplina()}</td>
@@ -37,40 +40,6 @@
 							<td><a href="removerTurma?codigo=${i.value.getCodigo()}">Remover</a></td>
 							</tr>
 				</c:forEach>
-
-			<%
-			String codigo, disciplina, periodo;
-			int credito = 0;
-
-			codigo = request.getParameter("codigo");
-			disciplina = request.getParameter("disciplina");
-			periodo = request.getParameter("periodo");
-
-			if (request.getParameter("creditos") != null && !request.getParameter("creditos").equals(""))
-				credito = Integer.parseInt(request.getParameter("creditos"));
-
-			Turma t = new Turma();
-			if(codigo != null && disciplina != null && periodo != null)
-			if (codigo.equals("") || disciplina.equals("") || periodo.equals("") || credito == 0) {
-				throw new CadastroException();
-
-			} else {
-
-				if (TurmasManager.getTurmas().containsKey(codigo)) {
-					throw new InsertException();
-				} else {
-
-					t.setCodigo(codigo);
-					t.setCredito(credito);
-					t.setDisciplina(disciplina);
-					t.setPeriodo(periodo);
-
-					TurmasManager.addTurma(t);
-
-				}
-			}
-		
-			%>
 				
 				
 				
